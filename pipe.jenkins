@@ -11,9 +11,12 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("First step") {
+        stage("create docker image") {
             steps {
-                sh 'ssh root@cent1 \'hostname\''
+                echo "============ start building image =============="
+                dir ('/') {
+                    sh 'docker build'
+                }
             }
         }
         stage("Second step") {
